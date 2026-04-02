@@ -43,14 +43,17 @@ Casos de prueba, diagramas de bloques, diagrama de secuencia, pruebas de perform
 
 ## Informe
 
-- [ ] [Informe](./Informe/informe.md)
+- [ ] [Informe - Iteracion 1 - Python + C](./Informe/informe-iteracion1.md)
+- [ ] [Informe - Iteracion 2 - Python + C + ASM](./Informe/informe-iteracion2.md)
 
 ## Branch
 
 ```bash
-					 /-- integracion1 -----\   /-- integracion2 -----\
-					/				        \ /				    	  \
-		 /-- dev --+-------------------------+-------------------------+--
-    	/																\
-master +-----------------------------------------------------------------+----------
+						 /-- integrante --\			   /-- integrante --\
+						/				   \	      /				     \
+					 /--- interacion1 ------+--\   /--- interacion2 ------+-\
+					/				        	\ /				    	  	 \
+		 /-- dev --+-----------------------------+----------------------------+---
+    	/																	     \
+master +--------------------------------------------------------------------------+----
 ```
