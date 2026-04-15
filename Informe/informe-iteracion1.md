@@ -9,7 +9,7 @@ Esta interface tiene dos metodos
 - **/values/plusone/<date_start>/<date_end>:** Permite definirmos años que serán obteneido del banco central
 - **/values/default:** Permite obtener los valores por defectos del tp. Los años serán 2011:2020 y los valores no serán afectados.
 
-![image 1](./imagenes/routes.png)
+![image 1](./imagenes/Iteracion1-flask_routes.png)
 
 ## Formas de trabajo
 
@@ -34,6 +34,7 @@ El banco central nos devuelve indicadores GINI y su valor. Cada valor será incr
 python3 iteracion-1/interface.py
 ```
 
+![image n](./imagenes/Iteracion1-flask_activo.png)
 
 ## Compilar C
 
