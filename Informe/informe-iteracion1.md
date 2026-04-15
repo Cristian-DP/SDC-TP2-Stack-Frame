@@ -1,5 +1,8 @@
 # Iteracion 1
 
+resolverán todo el trabajo práctico usando c con python sin ensamblador. 
+
+
 # Interface (python)
 
 ## Rutas
