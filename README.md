@@ -51,7 +51,7 @@ Casos de prueba, diagramas de bloques, diagrama de secuencia, pruebas de perform
 ```bash
 						 /-- integrante --\			   /-- integrante --\
 						/				   \	      /				     \
-					 /--- interacion1 ------+--\   /--- interacion2 ------+-\
+					 /-+- interacion1 ------+--\   /-+- interacion2 ------+-\
 					/				        	\ /				    	  	 \
 		 /-- dev --+-----------------------------+----------------------------+---
     	/																	     \
