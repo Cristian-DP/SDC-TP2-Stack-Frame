@@ -3,27 +3,35 @@ global convertir_float_a_int
 
 section .text
 
-; Suma 1 al valor entero recibido en RDI y devuelve el resultado en RAX.
+; Convención de llamadas: System V AMD64 ABI
+
+
+; ------------------------------------------------------------
+; sumar_uno: recibe un entero en RDI, devuelve RDI + 1 en RAX
+; ------------------------------------------------------------
 sumar_uno:
-    push    rbp
-    mov     rbp, rsp
+    push    rbp             ; Guarda el marco y
+    mov     rbp, rsp        ; establece el nuevo stack frame
 
-    mov     rax, rdi
-    add     rax, 1
+    mov     rax, rdi        ; Copia el argumento al registro de retorno
+    add     rax, 1          ; suma 1
 
-    pop     rbp            
-    ret  
+    pop     rbp             ; Restaura el marco del llamador
+    ret                     ; Retorna con resultado en RAX
 
-
+; ------------------------------------------------------------
+; convertir_float_a_int: recibe un float en XMM0,
+; lo trunca a entero y devuelve el resultado en RAX
+; ------------------------------------------------------------
 convertir_float_a_int:
-    push    rbp
-    mov     rbp, rsp
-    and     rsp, -16        ; alinea el stack a 16 bytes
+    push    rbp             ; Guarda el marco y
+    mov     rbp, rsp        ; establece el nuevo stack frame
+    and     rsp, -16        ; Alinea el stack a 16 bytes (requerido para XMM)
 
-    cvttss2si rax, xmm0     ; convierte el float en xmm0 a entero, resultado en rax
+    cvttss2si rax, xmm0     ; Convierte float → entero truncando decimales
 
-    mov     rsp, rbp        ; restaura rsp antes de salir
-    pop     rbp
-    ret
+    mov     rsp, rbp        ; Restaura RSP antes de salir
+    pop     rbp             ; Restaura el marco del llamador
+    ret                     ; Retorna con resultado en RAX
 
 section .note.GNU-stack noalloc noexec nowrite progbits
