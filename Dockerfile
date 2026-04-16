@@ -2,7 +2,7 @@
 FROM python:3.12-slim
 
 # 2. Establecemos el directorio de trabajo dentro del contenedor
-WORKDIR /iteracion-1
+WORKDIR /iteracion-2
 
 # 3. Copiamos el archivo de requerimientos primero para aprovechar la caché de Docker
 # (Asegúrate de crear un archivo requirements.txt con la palabra 'Flask')
@@ -12,7 +12,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 5. Copiamos el resto del código de tu proyecto
-COPY iteracion-1 .
+COPY iteracion-2 .
 
 # 6. Exponemos el puerto que usa Flask por defecto
 EXPOSE 5000
