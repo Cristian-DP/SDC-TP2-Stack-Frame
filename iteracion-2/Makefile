@@ -1,9 +1,9 @@
-compile: clean floatToIntPlusOne.o middleware.o
-	gcc -shared -o libreria.so middleware.o floatToIntPlusOne.o
+compile: clean routines.o middleware.o
+	gcc -shared -o libreria.so middleware.o routines.o
 	rm -f *.o
 
-floatToIntPlusOne.o:
-	as --64 -g -o floatToIntPlusOne.o floatToIntPlusOne.s
+routines.o:
+	nasm -f elf64 -g -o routines.o routines.asm
 
 middleware.o:
 	gcc -c -Wall -Werror -fPIC -g -o middleware.o middleware.c
