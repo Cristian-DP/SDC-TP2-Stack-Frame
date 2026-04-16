@@ -2,7 +2,7 @@
 FROM python:3.12-slim
 
 # 2. Establecemos el directorio de trabajo dentro del contenedor
-WORKDIR /app
+WORKDIR /iteracion-1
 
 # 3. Copiamos el archivo de requerimientos primero para aprovechar la caché de Docker
 # (Asegúrate de crear un archivo requirements.txt con la palabra 'Flask')
@@ -18,7 +18,7 @@ COPY iteracion-1 .
 EXPOSE 5000
 
 # 7. Definimos la variable de entorno para que Flask sea visible externamente
-ENV FLASK_APP=app.py
+ENV FLASK_APP=interface.py
 ENV FLASK_RUN_HOST=0.0.0.0
 
 # 8. Comando para ejecutar la aplicación

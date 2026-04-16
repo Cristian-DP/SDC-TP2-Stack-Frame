@@ -41,6 +41,53 @@ Las presentaciones de los trabajos se realizan utilizando GitHub (una cuenta pri
 
 Casos de prueba, diagramas de bloques, diagrama de secuencia, pruebas de performance para comparar c y python son bienvenidos, profiling de la app de c es un plus.
 
+## Docker
+
+El proyecto incluye un `Dockerfile` y un `Makefile` para construir y ejecutar el contenedor sin necesidad de `docker-compose`.
+
+Targets disponibles:
+
+- `make build` — construye la imagen
+- `make run` — ejecuta el contenedor en primer plano (Ctrl+C para detener, se elimina al salir)
+- `make stop` — detiene el contenedor
+- `make rm` — elimina el contenedor de forma forzada
+- `make logs` — muestra los logs del contenedor en ejecución
+- `make rebuild` — elimina el contenedor y reconstruye la imagen sin caché
+
+Por defecto la app queda expuesta en `http://localhost:5000`. Para usar otro puerto:
+
+```bash
+make run PORT=8080
+```
+
+## Endpoints
+
+Con el contenedor corriendo la API queda disponible en `http://localhost:5000`.
+
+### `GET /values/plusone/<date_start>/<date_end>`
+
+Recupera el índice GINI del Banco Mundial en el rango de años indicado y le aplica la rutina `middleware` (suma 1 al valor).
+
+Los parámetros se pasan en el **path**, no como query string:
+
+```bash
+curl http://localhost:5000/values/plusone/2011/2020
+```
+
+O desde el navegador: [http://localhost:5000/values/plusone/2011/2020](http://localhost:5000/values/plusone/2011/2020).
+
+### `GET /values/default`
+
+Devuelve los valores por defecto definidos en el backend.
+
+```bash
+curl http://localhost:5000/values/default
+```
+
+### `GET /`
+
+Lista en formato HTML todas las rutas registradas en la app.
+
 ## Informe
 
 - [ ] [Informe - Iteracion 1 - Python + C](./Informe/informe-iteracion1.md)

@@ -17,7 +17,7 @@ def middleware(f):
 
     # 2. Configurar los tipos de datos (IMPORTANTE)
     # C no sabe qué le envía Python, hay que definir los tipos de argumentos y retorno
-    mi_lib.procesar_gini.argtypes = [ctypes.c_float]
-    mi_lib.procesar_gini.restype = ctypes.c_float
+    mi_lib.process_gini_value.argtypes = [ctypes.c_float]
+    mi_lib.process_gini_value.restype = ctypes.c_float
 
-    return mi_lib.procesar_gini(f)
+    return mi_lib.process_gini_value(f)
