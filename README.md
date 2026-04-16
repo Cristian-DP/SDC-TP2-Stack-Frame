@@ -120,16 +120,46 @@ make clean       # borra artefactos
 
 ### Compilación del archivo ensamblador (iteración 2)
 
-En la iteración 2 hay además un archivo en ensamblador (`floatToIntPlusOne.s`) que implementa la rutina que antes estaba en C. El mismo `gcc` sabe compilar archivos `.s`: internamente invoca al ensamblador (`as`) para generar el `.o` y luego lo linkea.
+En la iteración 2 las rutinas de bajo nivel viven en `routines.asm`, escrito en **sintaxis NASM (Intel)**. Expone dos funciones que respetan la convención System V AMD64 ABI:
+
+| Función | Argumento | Retorno |
+|---|---|---|
+| `sumar_uno` | entero en `%rdi` | entero en `%rax` |
+| `convertir_float_a_int` | float en `%xmm0` | entero en `%rax` |
+
+El `middleware.c` las compone: `process_gini_value(float) = sumar_uno(convertir_float_a_int(float))`.
+
+#### Dependencia adicional: `nasm`
+
+Como el archivo está en sintaxis NASM, **no** puede ensamblarse con `as` (GNU). Hay que instalar `nasm`:
 
 ```bash
-gcc -c -g floatToIntPlusOne.s -o floatToIntPlusOne.o
-gcc -shared -fPIC -g -o libreria.so middleware.o floatToIntPlusOne.o
+sudo apt install nasm
+```
+
+#### Comandos
+
+El `Makefile` de `iteracion-2/` ya hace todo:
+
+```bash
+cd iteracion-2
+make compile
+```
+
+Equivalente manual:
+
+```bash
+nasm -f elf64 -g -o routines.o routines.asm
+gcc -c -Wall -Werror -fPIC -g -o middleware.o middleware.c
+gcc -shared -o libreria.so middleware.o routines.o
 ```
 
 Notas:
 
-- `-g`: agrega los símbolos de debug necesarios para ver las instrucciones de `floatToIntPlusOne` desde gdb con `disassemble` o `layout asm`.
+- `-f elf64`: formato de objeto ELF de 64 bits (Linux x86-64).
+- `-g` (en `nasm` y `gcc`): símbolos de debug para inspeccionar las rutinas desde gdb con `disassemble` o `layout asm`.
+
+Para más detalle de las rutinas y la convención de llamadas ver [`iteracion-2/README.md`](./iteracion-2/README.md).
 
 ## Informe
 
