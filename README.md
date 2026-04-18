@@ -60,6 +60,8 @@ Por defecto la app queda expuesta en `http://localhost:5000`. Para usar otro pue
 make run PORT=8080
 ```
 
+El Dockerfile esta  construido en modo multistage permitiendo separa logicas de construcción y ejecición. La Etapa de construcción se centra en obtener la librari dinamica que será utilizada por la interface. Mientras que la etapa de ejecución se ecnarga de ejecutar la api rest; tomando de la etapa de construcción el directorio donde se encuntra la libraria dinamica
+
 ## Endpoints
 
 Con el contenedor corriendo la API queda disponible en `http://localhost:5000`.
