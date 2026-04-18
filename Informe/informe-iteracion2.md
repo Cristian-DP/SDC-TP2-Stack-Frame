@@ -1,6 +1,6 @@
 # GDB
 
-- [Cristian Pereyra](./Informe/informe-iteracion2-Cristian.md)
+- [Cristian Pereyra](./informe-iteracion2-Cristian.md)
 
 # Docker
 
