@@ -2,11 +2,11 @@
 
 ## Codigo C
 
-![codigo](../Informe/imagenes/gdb/Cristian/code.png)
+![codigo](./imagenes/gdb/Cristian/code.png)
 
 ## Configuramos gdb
 
-![codigo](../Informe/imagenes/gdb/Cristian/break-point.png)
+![codigo](./imagenes/gdb/Cristian/break-point.png)
 
 ```bash
 # Puntos donde el programa se detendrá
@@ -33,7 +33,7 @@ Breakpoint 1, process_gini_value (value=1) at middleware.c:13
 
 ## Ver el Stack ANTES de la función
 
-![codigo](../Informe/imagenes/gdb/Cristian/stackFrame-before.png)
+![codigo](./imagenes/gdb/Cristian/stackFrame-before.png)
 
 ```bash
 # revisamos los punteros del stack ($rsp y $rbp)
@@ -114,9 +114,9 @@ rax            0x3f800000          1065353216 # Floating Point (IEEE 754) de 32 
 
 ## Pasaje de datos
 
-![codigo](../Informe/imagenes/gdb/Cristian/valor_pasado.png)
+![codigo](./imagenes/gdb/Cristian/valor_pasado.png)
 
-![codigo](../Informe/imagenes/gdb/Cristian/pasaje_de_datos.png)
+![codigo](./imagenes/gdb/Cristian/pasaje_de_datos.png)
 
 ## Ver el Stack DESPUÉS
 
