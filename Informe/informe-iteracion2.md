@@ -1,8 +1,8 @@
 # GDB
 
-- [Cristian Pereyra](./informe-iteracion2-Cristian.md)
+- [Cristian Pereyra](./informe-gdb-Cristian.md)
 - [Nicolas Lopez](./informe-gdb-Nicolas.md)
-- [Franscisco](./informe-Francisco.md)
+- [Franscisco](./informe-gdb-Francisco.md)
 
 # Docker
 
