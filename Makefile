@@ -8,7 +8,7 @@ build:
 	docker build -t $(IMAGE) .
 
 run:
-	docker run --rm -it -p $(PORT):5000 --name $(CONTAINER) $(IMAGE)
+	docker run -d -it -p $(PORT):5000 --name $(CONTAINER) $(IMAGE)
 
 stop:
 	docker stop $(CONTAINER)
@@ -22,3 +22,8 @@ logs:
 rebuild:
 	-docker rm -f $(CONTAINER)
 	docker build --no-cache -t $(IMAGE) .
+
+help:
+	@echo "Opciones disponibles:"
+	@echo "  make install  - Instala Docker, Docker Compose y configura el usuario"
+	@echo "  make clean    - Desinstala Docker y elimina archivos de configuración"

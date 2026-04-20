@@ -1,25 +1,42 @@
-# 1. Usamos una imagen ligera de Python como base
+# --- ETAPA 1: Compilación (Builder) ---
+FROM python:3.12-slim AS builder
+
+# Instalamos las herramientas necesarias para compilar C
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    make \
+    gcc \
+    nasm \
+    libc6-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /build
+
+# Copiamos solo lo necesario para la compilación desde la carpeta iteracion-2
+# Nota: Docker busca los archivos relativos al "contexto de construcción"
+COPY iteracion-2/ .
+
+# Ejecutamos el Makefile
+RUN make compile
+
+# --- ETAPA 2: Ejecución (Runtime) ---
 FROM python:3.12-slim
 
-# 2. Establecemos el directorio de trabajo dentro del contenedor
 WORKDIR /iteracion-2
 
-# 3. Copiamos el archivo de requerimientos primero para aprovechar la caché de Docker
-# (Asegúrate de crear un archivo requirements.txt con la palabra 'Flask')
+# Instalamos dependencias de Python (aprovechando caché)
 COPY requirements.txt .
-
-# 4. Instalamos las dependencias
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 5. Copiamos el resto del código de tu proyecto
-COPY iteracion-2 .
+# Copiamos el código fuente de Python (.py)
+#COPY iteracion-2/*.py ./
 
-# 6. Exponemos el puerto que usa Flask por defecto
+# Copiamos los binarios o archivos generados en la Etapa 1 
+# (Ajusta 'archivo_generado' al nombre del output de tu Makefile)
+COPY --from=builder /build/ /iteracion-2/
+
+# Configuración de Flask
 EXPOSE 5000
-
-# 7. Definimos la variable de entorno para que Flask sea visible externamente
 ENV FLASK_APP=interface.py
 ENV FLASK_RUN_HOST=0.0.0.0
 
-# 8. Comando para ejecutar la aplicación
 CMD ["flask", "run"]

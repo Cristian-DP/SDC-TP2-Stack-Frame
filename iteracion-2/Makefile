@@ -10,3 +10,9 @@ middleware.o:
 
 clean:
 	rm -f *.o *.so
+
+debug-native:
+	nasm -f elf64 -g -o routines.o routines.asm
+	gcc -c -g -Wall -o middleware.o middleware.c
+	gcc -g -o programa_debug middleware.o routines.o
+	gdb ./programa_debug
