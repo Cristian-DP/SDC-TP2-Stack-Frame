@@ -69,8 +69,16 @@ int main() {
 
 ### Requisitos
 
+| Paquete | Motivo |
+|---|---|
+| `nasm` | Ensamblador requerido. `routines.asm` está escrito en sintaxis NASM (`global`, `section .text`), por lo que **no** puede ensamblarse con `as` (GNU). |
+| `gcc` | Compilador y linker para `middleware.c` y la librería compartida. |
+| `make` | Para usar el `Makefile` provisto. |
+
+Instalación en distribuciones basadas en Debian/Ubuntu:
+
 ```bash
-sudo apt install nasm gcc
+sudo apt install nasm gcc make
 ```
 
 ### Pasos
