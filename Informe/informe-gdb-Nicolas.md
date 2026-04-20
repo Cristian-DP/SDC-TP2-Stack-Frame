@@ -26,7 +26,7 @@ gdb ./programa_debug
 (gdb) break process_gini_value
 ```
 
-![Configuración de GDB y breakpoint](./imagenes/gdb-Nicolas/1.png)
+![Configuración de GDB y breakpoint](./imagenes/gdb/Nicolas/1.png)
 
 El breakpoint queda registrado en `middleware.c` línea 13, que es donde comienza la función.
 
@@ -38,7 +38,7 @@ El breakpoint queda registrado en `middleware.c` línea 13, que es donde comienz
 (gdb) run
 ```
 
-![Ejecución detenida en el breakpoint](./imagenes/gdb-Nicolas/2.png)
+![Ejecución detenida en el breakpoint](./imagenes/gdb/Nicolas/2.png)
 
 El programa se detiene en el breakpoint con `value=1`, confirmando que la función recibió el valor `1.0` desde `main`.
 
@@ -53,7 +53,7 @@ Se examina el stack y los registros antes de que se ejecuten las rutinas ASM:
 (gdb) info registers rsp rbp
 ```
 
-![Stack y registros ANTES](./imagenes/gdb-Nicolas/3.png)
+![Stack y registros ANTES](./imagenes/gdb/Nicolas/3%20y%204.png)
 
 Observaciones:
 
@@ -72,7 +72,7 @@ Se avanza con `stepi` hasta entrar a `convertir_float_a_int`:
 (gdb) stepi
 ```
 
-![Entrada a convertir_float_a_int y registro xmm0](./imagenes/gdb-Nicolas/5.png)
+![Entrada a convertir_float_a_int y registro xmm0](./imagenes/gdb/Nicolas/5.png)
 
 Una vez dentro de la rutina ASM se verifica el parámetro recibido:
 
@@ -90,7 +90,7 @@ El registro `xmm0` muestra `v4_float = {0x3f800000}`, que es la representación 
 (gdb) layout asm
 ```
 
-![Layout ASM de convertir_float_a_int](./imagenes/gdb-Nicolas/6_layout_asm_2_.png)
+![Layout ASM de convertir_float_a_int](./imagenes/gdb/Nicolas/6%28layout%20asm%202%29.png)
 
 Se observa la función completa en ensamblador:
 
@@ -118,7 +118,7 @@ Se avanza con `stepi` hasta ejecutar la instrucción `cvttss2si` y se verifica e
 (gdb) info registers rax
 ```
 
-![Resultado en rax después de cvttss2si](./imagenes/gdb-Nicolas/7.png)
+![Resultado en rax después de cvttss2si](./imagenes/gdb/Nicolas/7.png)
 
 `rax = 0x1 = 1`. La instrucción `cvttss2si` convirtió correctamente el valor `1.0` en el entero `1`, truncando los decimales. El resultado queda listo en `%rax` para ser retornado a `process_gini_value`.
 
@@ -134,7 +134,7 @@ Se ejecuta `finish` para completar la rutina y se examina el estado final del st
 (gdb) info registers rsp rbp rax
 ```
 
-![Stack y registros DESPUÉS](./imagenes/gdb-Nicolas/10__8_y_9_.png)
+![Stack y registros DESPUÉS](./imagenes/gdb/Nicolas/10%20%288%20y%209%29.png)
 
 Observaciones:
 
