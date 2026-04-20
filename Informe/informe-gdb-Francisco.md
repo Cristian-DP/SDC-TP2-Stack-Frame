@@ -73,7 +73,7 @@ Ahora hacemos `stepi` 3 veces para enntrar al la funcion `convertir_float_a_int`
 
 Luego con `layout asm` podemos ver el assembler de `convertir_float_a_int`:
 
-![image n](./imagenes/Francisco/gdb_layout_asm.png.png)
+![image n](./imagenes/Francisco/gdb_layout_asm.png)
 
 Podemos ver el valor que llego de `c` como parametro con `info registers xmm0`. Luego con el comando `p $xmm0.v4_float[0]` podemos ver que en efecto el valor es el 1.0 que pasamos en el `main` del `iteracion-2/middleware.c`.
 
