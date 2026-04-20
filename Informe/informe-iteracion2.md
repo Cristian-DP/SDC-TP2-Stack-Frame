@@ -130,9 +130,5 @@ Notas:
 
 - `-f elf64`: formato de objeto ELF de 64 bits (Linux x86-64).
 - `-g` (en `nasm` y `gcc`): símbolos de debug para inspeccionar las rutinas desde gdb con `disassemble` o `layout asm`.
-
-<<<<<<< HEAD
-Para más detalle de las rutinas y la convención de llamadas ver [`iteracion-2/README.md`](./iteracion-2/README.md).
-=======
-Para más detalle de las rutinas y la convención de llamadas ver [`iteracion-2/README.md`](./iteracion-2/README.md).
->>>>>>> origin/informe/cristian
+- 
+Para más detalle de las rutinas y la convención de llamadas ver [iteracion-2/README.md](../iteracion-2/README.md).
